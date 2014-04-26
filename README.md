@@ -5,12 +5,16 @@ I would like to call this project JSON Observer since this observer is a library
 JSON Obeserver features:
 
 *support whitespace in input 
+
 * Error messages
   * Useful/helpful
   * Indicate precisely where the error is
   * Line/Column
+
 *pretty printer
+
 *Support for unicode. eg: /u1234
+
 *Support for take input from file, String, url source
 
 I use the apporach of standard JAVA object to represent JSON numbers as Java Number object, JSON strings as Java String objects, Java arrays as List<Object> objects, and JSON objects as Java Hashtable<String,Object> objects.
