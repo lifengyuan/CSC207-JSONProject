@@ -9,11 +9,16 @@ import java.util.List;
 import junit.framework.Assert;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
+/**
+ * ParserTest class
+ * 
+ * @author Fengyuan Li
+ * 
+ */
 public class ParserTest
 {
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("deprecation")
   @Test
   public void
     readTest ()
@@ -78,5 +83,5 @@ public class ParserTest
           }
       }
 
-  }
-}
+  }// readTest()
+}// class ParserTest()

@@ -4,8 +4,19 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+/**
+ * class JSONParser
+ * 
+ * @author Fengyuan
+ * 
+ */
 public class JSONParser
 {
+
+  // +--------+----------------------------------------------
+  // | Fields |
+  // +--------+
+
   private static final String OBJECT_END = "OBJECT_END";
   private static final String ARRAY_END = "ARRAY_END";
   private static final String COMMA = "COMMA";
@@ -15,11 +26,15 @@ public class JSONParser
   private String json;
   private Object jsonObject;
 
+  // +--------------+----------------------------------------
+  // | Constructors |
+  // +--------------+
+
   /**
    * parse json string to HashTable
    * 
    * @param json
-   * @return
+   * @return jsonObject
    * @throws JSONFormatException
    */
   @SuppressWarnings("unchecked")
@@ -31,12 +46,15 @@ public class JSONParser
     this.index = 0;
     jsonObject = parse ();
     return new JSONObject ((Hashtable<String, Object>) jsonObject);
-  }
+  }// parse(String)
 
+  // +---------+----------------------------------------
+  // | Methods |
+  // +---------+
   /**
    * parse json string to object
    * 
-   * @return
+   * @return object
    * @throws JSONFormatException
    */
   private Object
@@ -49,7 +67,7 @@ public class JSONParser
     while (Character.isWhitespace (json.charAt (index)))
       {
         index++;
-      }
+      }// while
 
     char ch = json.charAt (index);
 
@@ -59,17 +77,17 @@ public class JSONParser
       {
         index++;
         ret = readString ('"');
-      }
+      }// if
     else if (ch == '\'')
       {
         index++;
         ret = readString ('\'');
-      }
+      }// else if
     else if (ch == ',')
       {
         index++;
         ret = COMMA;
-      }
+      }// else if
     else if (ch == ':')
       {
         index++;
@@ -120,7 +138,7 @@ public class JSONParser
       }
 
     return ret;
-  }
+  }// parse()
 
   /**
    * read a string value from json string in sheet or double quotes
@@ -209,11 +227,11 @@ public class JSONParser
                         case 'F':
                           value = (value << 4) + (ch - '7');
                           break;
-                      }
-                  }
+                      }// switch
+                  }// for
                 str.append ((char) value);
-              }
-          }
+              }// else if
+          }// if
         else
           {
             str.append (ch);
@@ -222,7 +240,7 @@ public class JSONParser
       }
     index++;
     return str.toString ();
-  }
+  }// readString(char)
 
   /**
    * read an object from json string.
@@ -244,13 +262,14 @@ public class JSONParser
         while (!next.equals (OBJECT_END))
           {
             next = parse ();
-
+            // Is the next is object or not?
             if (!next.equals (OBJECT_END))
               {
                 Object value = parse ();
                 table.put (key, value);
 
                 next = parse ();
+                // Is the next is comma or not?
                 if (next.equals (COMMA))
                   {
                     next = parse ();
@@ -258,19 +277,19 @@ public class JSONParser
                     if (next instanceof String)
                       {
                         key = next.toString ();
-                      }
+                      }// if
                     else
                       {
+                        // erro message report
                         throw new JSONFormatException ("json format error at "
                                                        + index);
                       }
-                  }
-              }
-          }
-      }
-
+                  }// if
+              }// if
+          }// while
+      }// if
     return table;
-  }
+  }// readObject()
 
   /**
    * read an array object from json string
@@ -284,7 +303,7 @@ public class JSONParser
   {
     List<Object> array = new ArrayList<Object> ();
     Object next = parse ();
-
+    // read following the list until the next is not a array
     while (!next.equals (ARRAY_END))
       {
         array.add (next);
@@ -294,15 +313,15 @@ public class JSONParser
         if (next.equals (COMMA))
           {
             next = parse ();
-          }
+          }// if
         else if (!next.equals (ARRAY_END))
           {
             throw new JSONFormatException ("No array end character");
-          }
-      }
+          }// else if
+      }// while
 
     return array;
-  }
+  }// readArray()
 
   /**
    * read a number from json string
@@ -319,13 +338,13 @@ public class JSONParser
       {
         str.append (ch);
         ch = json.charAt (++index);
-      }
+      }// if
 
     while (Character.isDigit (ch))
       {
         str.append (ch);
         ch = json.charAt (++index);
-      }
+      }// while
 
     if (ch == '.')
       {
@@ -335,8 +354,8 @@ public class JSONParser
           {
             str.append (ch);
             ch = json.charAt (++index);
-          }
-      }
+          }// while
+      }// if
 
     if (ch == 'e' || ch == 'E')
       {
@@ -346,25 +365,25 @@ public class JSONParser
           {
             str.append (ch);
             ch = json.charAt (++index);
-          }
+          }// if
 
         while (Character.isDigit (ch))
           {
             str.append (ch);
             ch = json.charAt (++index);
-          }
-      }
+          }// while
+      }// if
 
     Number number = null;
     if (str.indexOf (".") >= 0 || str.indexOf ("e") >= 0
         || str.indexOf ("E") >= 0)
       {
         number = new BigDecimal (str.toString ());
-      }
+      }// if
     else
       {
         number = new BigInteger (str.toString ());
       }
     return number;
-  }
-}
+  }// readNumber()
+}// class JSONParser
