@@ -1,9 +1,5 @@
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Set;
-
 /**
- * 
+ *  
  Copyright {2014} {Fengyuan Li}
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -17,7 +13,14 @@ import java.util.Set;
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- * 
+ */
+
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Set;
+
+/**
+ *
  * JSONObject class
  * 
  * @author Fengyuan Li

@@ -1,9 +1,3 @@
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-
 /**
  * 
  Copyright {2014} {Fengyuan Li}
@@ -19,7 +13,16 @@ import java.util.List;
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- * 
+ */
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+
+/**
+ *
  * class JSONParser
  * 
  * @author Fengyuan

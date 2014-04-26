@@ -1,16 +1,5 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.util.List;
-
-import junit.framework.Assert;
-
-import org.junit.Test;
-
 /**
+ * 
  * 
  Copyright {2014} {Fengyuan Li}
  * 
@@ -25,6 +14,21 @@ import org.junit.Test;
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
+ */
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.util.List;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+/**
  * 
  * ParserTest class
  * 
