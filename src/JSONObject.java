@@ -3,6 +3,21 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * 
+ Copyright {2014} {Fengyuan Li}
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ * 
  * JSONObject class
  * 
  * @author Fengyuan Li
@@ -22,9 +37,7 @@ public class JSONObject
   // +--------------+
 
   /**
-   * JSONObject Constructor
-   * 
-   * @param table
+   * Construct an empty JSONObject.
    */
   public JSONObject ()
   {
@@ -41,10 +54,12 @@ public class JSONObject
   // +---------+
 
   /**
-   * get the key from table
+   * Get the value object associated with a key.
    * 
    * @param key
-   * @return object
+   *          A key string.
+   * @return The object associated with the key.
+   * 
    */
 
   public Object
@@ -54,11 +69,12 @@ public class JSONObject
   }// get(String)
 
   /**
-   * Get number from the key, if there do not have number in this key return
-   * null.
+   * Get the int value associated with a key.
    * 
    * @param key
-   * @return number
+   *          A key string.
+   * @return The numeric value. return null if the key is not found or if the
+   *         value cannot be converted to an integer.
    */
   public Number
     getNumber (String key)
@@ -75,10 +91,12 @@ public class JSONObject
   }
 
   /**
-   * remove the specific key from the table
+   * Remove a key and its value, if present.
    * 
    * @param key
-   * 
+   *          The name to be removed.
+   * @return The value that was associated with the key, or null if there was no
+   *         value.
    */
   public Object
     remove (String key)
@@ -87,10 +105,12 @@ public class JSONObject
   }// remove(String)
 
   /**
-   * get string from the key, if not a string return null
+   * Get the string associated with a key.
    * 
    * @param key
-   * @return string
+   *          A key string.
+   * @return A string which is the value.
+   * @return null if there is no string value for the key.
    */
   public String
     getString (String key)
@@ -107,8 +127,12 @@ public class JSONObject
   }// getString(String)
 
   /**
-   * get all array from the key, if not return null
+   * Get the JSONArray value associated with a key.
    * 
+   * @param key
+   *          A key string.
+   * @return A JSONArray which is the value.
+   * @return null if the key is not found or if the value is not a JSONArray.
    */
   @SuppressWarnings("unchecked")
   public List<Object>
@@ -126,12 +150,12 @@ public class JSONObject
   }// getArray(String)
 
   /**
-   * get object from the key converse the object to json object. if not return
-   * null
+   * Get the JSONObject value associated with a key.
    * 
    * @param key
-   * @return JSONObject
-   * 
+   *          A key string.
+   * @return A JSONObject which is the value.
+   * @return null if the key is not found or if the value is not a JSONObject.
    */
   @SuppressWarnings("unchecked")
   public JSONObject
@@ -149,10 +173,9 @@ public class JSONObject
   }// getJSONObject(String)
 
   /**
-   * Returns a Set of the keys contained in this table
+   * Get a set of keys of the JSONObject.
    * 
-   * @param
-   * @return set
+   * @return A keySet.
    */
 
   public Set<String>
@@ -166,8 +189,14 @@ public class JSONObject
   // +---------------+
 
   /**
-   * fix the format of the output
+   * Make a prettyprinted JSON text of this JSONObject. For compactness, no
+   * whitespace is added. If this would not result in a syntactically correct
+   * JSON text, then null will be returned instead.
    * 
+   * Warning: This method assumes that the data structure is acyclical.
+   * 
+   * @return a printable, displayable, portable, transmittable representation of
+   *         the object.
    */
 
   @Override
