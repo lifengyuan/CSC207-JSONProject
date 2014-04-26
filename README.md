@@ -3,7 +3,6 @@ JSON Obeserver
 I would like to call this project JSON Observer since this observer is a library to view, edit about data structure,report error message, converse a JSON code to JAVA object. More detail about JSON, Please see its offical website: http://www.json.org/
 
 JSON Obeserver features:
-+++++++++++++++++++++++++
 
 *support whitespace in input 
 * Error messages
