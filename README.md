@@ -4,12 +4,14 @@ I would like to call this project JSON Observer since this observer is a library
 
 ### Features: 
 #### Table observer:     ` private Hashtable<String, Object> table; `
+      
       - Edit, add, move, remove,  fields and values.
       - Converse
       - Sort arrays and objects.
       - Search and get
       
 #### Code observer: 
+      
       - Format and compact JSON.
       - Support whitespace in input 
       - Error messages.  Location(line) and reason 
